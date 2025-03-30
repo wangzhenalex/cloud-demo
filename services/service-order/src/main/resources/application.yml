@@ -33,7 +33,7 @@ spring:
     import:
       - nacos:database.properties?group=order
       - nacos:common.properties?group=order
-      - nacos:hha.properties?group=order
+      - nacos:haha.properties?group=order
 
 ---
 # 在pre环境使用
@@ -44,4 +44,4 @@ spring:
     import:
       - nacos:database.properties?group=order
       - nacos:common.properties?group=order
-      - nacos:hha.properties?group=order
+      - nacos:hehe.properties?group=order
