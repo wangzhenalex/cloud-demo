@@ -2,6 +2,7 @@ package com.example.order.service.impl;
 
 import com.alibaba.nacos.shaded.com.google.common.collect.Lists;
 import com.example.order.Order;
+import com.example.order.feign.ProductFeignClient;
 import com.example.order.service.OrderService;
 import com.example.product.Product;
 import lombok.extern.slf4j.Slf4j;
@@ -29,14 +30,17 @@ public class OrderServiceImpl implements OrderService {
     DiscoveryClient discoveryClient;
     @Autowired
     LoadBalancerClient loadBalancerClient;
-    ;
+
     @Autowired
     RestTemplate restTemplate;
+    @Autowired
+    ProductFeignClient productFeignClient;
 
     @Override
     public Order createOrder(Long userId, Long productId) {
         Order order = new Order();
-        Product productFromRemote = getProductFromRemoteAnnotation(productId);
+//        Product productFromRemote = getProductFromRemoteAnnotation(productId);
+        Product productFromRemote =  productFeignClient.getProductById(productId);
         order.setId(1);
         order.setNickName("张三");
         order.setAddress("地址");
