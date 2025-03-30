@@ -4,6 +4,7 @@ import com.alibaba.cloud.nacos.NacosConfigManager;
 import com.alibaba.nacos.api.config.ConfigService;
 import com.alibaba.nacos.api.config.listener.Listener;
 import feign.Logger;
+import feign.Retryer;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -50,4 +51,10 @@ public class OrderMainApplication {
     Logger.Level feignLoggerLevel() {
         return Logger.Level.FULL;
     }
+
+    @Bean
+    Retryer retryer(){
+        return new Retryer.Default();
+    }
+
 }
