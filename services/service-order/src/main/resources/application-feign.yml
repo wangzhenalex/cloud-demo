@@ -13,6 +13,10 @@ spring:
             read-timeout: 3000
             request-interceptors:
               - com.example.order.interceptor.XTokenRequestInterceptor
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8080
+      eager: true
 feign:
   sentinel:
     enabled: true
