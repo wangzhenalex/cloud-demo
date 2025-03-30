@@ -23,10 +23,10 @@ public class OrderController {
     @Autowired
     OrderService orderService;
 
-    @Value("${order.timeout}")
-    String orderTimeout;
-    @Value("${order.auto-confirm}")
-    String orderAutoConfirm;
+//    @Value("${order.timeout}")
+//    String orderTimeout;
+//    @Value("${order.auto-confirm}")
+//    String orderAutoConfirm;
 
     @Autowired
     OrderProperties orderProperties;
@@ -37,11 +37,11 @@ public class OrderController {
                 "order.auto-confirm="+orderProperties.getAutoConfirm() +"；"+
                 "order.db-url="+orderProperties.getDbUrl();
     }
-    @GetMapping("/config1")
-    public String config1(){
-        return "order.timeout="+orderTimeout+"； " +
-                "order.auto-confirm="+orderAutoConfirm +"；";
-    }
+//    @GetMapping("/config1")
+//    public String config1(){
+//        return "order.timeout="+orderTimeout+"； " +
+//                "order.auto-confirm="+orderAutoConfirm +"；";
+//    }
     @GetMapping("/create")
     public Order createOrder(@RequestParam("userId") Long userId,
                              @RequestParam("productId") Long productId) {

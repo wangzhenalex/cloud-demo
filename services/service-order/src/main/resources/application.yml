@@ -1,0 +1,47 @@
+server:
+  port: 8000
+
+spring:
+  application:
+    name: order-service
+  profiles:
+    active: pre
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848
+      config:
+        import-check:
+          enabled: false
+        namespace: ${spring.profiles.active:public}
+
+---
+# 在开发环境使用
+spring:
+  config:
+    activate:
+      on-profile: dev
+    import:
+      - nacos:database.properties?group=order
+      - nacos:common.properties?group=order
+
+---
+# 在测试环境使用
+spring:
+  config:
+    activate:
+      on-profile: test
+    import:
+      - nacos:database.properties?group=order
+      - nacos:common.properties?group=order
+      - nacos:hha.properties?group=order
+
+---
+# 在pre环境使用
+spring:
+  config:
+    activate:
+      on-profile: pre
+    import:
+      - nacos:database.properties?group=order
+      - nacos:common.properties?group=order
+      - nacos:hha.properties?group=order
