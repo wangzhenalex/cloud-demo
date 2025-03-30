@@ -1,5 +1,6 @@
 package com.example.order.feign;
 
+import com.example.order.feign.fallback.ProductFeignClientFallback;
 import com.example.product.Product;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @time 2025/3/30 11:34
  * @description
  **/
-@FeignClient(value = "product-service")
+@FeignClient(value = "product-service", fallback = ProductFeignClientFallback.class)
 public interface ProductFeignClient {
     /**
      * 根据id获取商品信息

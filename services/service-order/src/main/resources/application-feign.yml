@@ -7,9 +7,12 @@ spring:
             logger-level: full
             connect-timeout: 1000
             read-timeout: 2000
-          service-product:
+          product-service:
             logger-level: full
-            connect-timeout: 3000
-            read-timeout: 5000
+            connect-timeout: 1000
+            read-timeout: 3000
             request-interceptors:
               - com.example.order.interceptor.XTokenRequestInterceptor
+feign:
+  sentinel:
+    enabled: true

@@ -21,7 +21,8 @@ public class ProductController {
 
     @GetMapping(value = "/product/getProductById")
     public Product getProductById(@RequestParam("id") Integer id,
-                                  HttpServletRequest request) {
+                                  HttpServletRequest request) throws InterruptedException {
+        Thread.sleep(10000000);
         String header = request.getHeader("Y-Token");
         System.out.println("Y-Token:" + header);
         return productService.getProductById(id);
