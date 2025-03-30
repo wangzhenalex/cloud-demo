@@ -2,6 +2,7 @@ package com.example.product.controller;
 
 import com.example.product.Product;
 import com.example.product.service.ProductService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,7 +20,10 @@ public class ProductController {
     ProductService productService;
 
     @GetMapping(value = "/product/getProductById")
-    public Product getProductById(@RequestParam("id") Integer id) {
+    public Product getProductById(@RequestParam("id") Integer id,
+                                  HttpServletRequest request) {
+        String header = request.getHeader("Y-Token");
+        System.out.println("Y-Token:" + header);
         return productService.getProductById(id);
     }
 }
