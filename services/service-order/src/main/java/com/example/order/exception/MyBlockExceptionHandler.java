@@ -16,7 +16,7 @@ import java.io.PrintWriter;
  * @time 2025/3/30 18:55
  * @description
  **/
-@Component
+//@Component
 public class MyBlockExceptionHandler implements BlockExceptionHandler {
     private ObjectMapper objectMapper = new ObjectMapper();
     @Override
