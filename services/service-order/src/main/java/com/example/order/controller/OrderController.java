@@ -53,6 +53,12 @@ public class OrderController {
         Order order =  orderService.createOrder(userId, productId);
         return order;
     }
+    @GetMapping("/seckill")
+     public Order seckill(@RequestParam("userId") Long userId,
+                             @RequestParam("productId") Long productId) {
+        Order order =  orderService.createOrder(userId, productId);
+        return order;
+    }
     //兜底回调
     public Order createOrderFallback(Long productId, Long userId, BlockException e){
         Order order = new Order();
